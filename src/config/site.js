@@ -1,7 +1,9 @@
 export const siteConfig = {
   name: "الزواوي",
+
   englishName: "El Zawawy Quran",
   tagline: "رفيقك اليومي مع القرآن الكريم",
+
   description:
     "تطبيق قرآن كريم متكامل يجمع المصحف، التلاوات الصوتية، التفسير، والأذكار اليومية في تجربة عربية سهلة وسريعة.",
   url: "https://elzawawy-quran.app",
@@ -10,8 +12,15 @@ export const siteConfig = {
   contactEmail: "support@elzawawy-quran.app",
   navigation: [
     { label: "الرئيسية", href: "#hero" },
-    { label: "المميزات", href: "#features" },
+
+    { label: "مميزات التطبيق", href: "#features" },
+    { label: "رحلة المستخدم", href: "#user-journey" },
+    { label: "رفيقك على كل جهاز", href: "#cross-device" },
+    { label: "الأسئلة الشائعة", href: "#faq" },
+
+    // { label: "المميزات", href: "#features" },
     { label: "تحميل التطبيق", href: "#download" },
+
   ],
   downloads: {
     appStore: {
