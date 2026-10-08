@@ -1,64 +1,88 @@
-import { siteConfig } from "../../../config/site";
 import { Container } from "../../../components/ui";
 
 export function Footer() {
   return (
-    <footer className="border-t border-zinc-200 bg-[#fbfaf6] py-10">
+    <footer className="bg-[#fbfaf6] border-t border-amber-100/60 py-10 text-right">
       <Container>
-        <div className="grid gap-8 md:grid-cols-[1.5fr_1fr_1fr]">
-          <div>
-            <a href="#hero" className="inline-flex items-center gap-3">
-              <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-emerald-800 text-lg font-bold text-white">
-                ز
-              </span>
-              <span>
-                <span className="block text-lg font-bold text-zinc-950">
-                  {siteConfig.name}
-                </span>
-                <span className="block text-sm text-zinc-500">
-                  {siteConfig.englishName}
-                </span>
-              </span>
-            </a>
-            <p className="mt-4 max-w-md leading-7 text-zinc-600">
-              {siteConfig.description}
+        {/* Top Footer Row */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-8">
+          
+          {/* Right Slogan */}
+          <div className="order-2 md:order-1 text-center md:text-right">
+            <p className="text-xs sm:text-sm text-zinc-500 font-medium">
+              ضع ليكون رفيقاً، لا مجرد تطبيق.
             </p>
           </div>
 
-          <div>
-            <h2 className="text-sm font-bold text-zinc-950">روابط سريعة</h2>
-            <ul className="mt-4 space-y-3">
-              {siteConfig.navigation.map((item) => (
-                <li key={item.href}>
-                  <a className="text-sm text-zinc-600 hover:text-emerald-800" href={item.href}>
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Center Navigation Links */}
+          <nav
+            aria-label="روابط أسفل الصفحة"
+            className="order-3 md:order-2"
+          >
+            <ul className="flex flex-wrap justify-center items-center gap-6 text-xs sm:text-sm font-semibold text-zinc-600">
+              <li>
+                <a
+                  href="#faq"
+                  className="hover:text-[#143d24] transition-colors"
+                >
+                  الأسئلة الشائعة
+                </a>
+              </li>
 
-          <div>
-            <h2 className="text-sm font-bold text-zinc-950">تابعنا</h2>
-            <ul className="mt-4 space-y-3">
-              {siteConfig.socialLinks.map((item) => (
-                <li key={item.href}>
-                  <a
-                    className="text-sm text-zinc-600 hover:text-emerald-800"
-                    href={item.href}
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a
+                  href="#user-journey"
+                  className="hover:text-[#143d24] transition-colors"
+                >
+                  رحلة المستخدم
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#features"
+                  className="hover:text-[#143d24] transition-colors"
+                >
+                  مميزات التطبيق
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#hero"
+                  className="hover:text-[#143d24] transition-colors"
+                >
+                  الرئيسية
+                </a>
+              </li>
             </ul>
+          </nav>
+
+          {/* Left Brand Logo */}
+          <div className="order-1 md:order-3 flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-[#143d24] flex items-center justify-center text-amber-300 font-bold text-lg shadow-sm">
+              ز
+            </div>
+
+            <div className="text-right">
+              <span className="block text-lg font-black tracking-wider text-[#143d24] font-serif">
+                ZAWAWY
+              </span>
+
+              <span className="block text-[10px] text-zinc-500 font-medium">
+                همك في رحلتك الإيمانية
+              </span>
+            </div>
           </div>
         </div>
 
-        <div className="mt-10 border-t border-zinc-200 pt-6 text-sm text-zinc-500">
-          © {new Date().getFullYear()} {siteConfig.englishName}. جميع الحقوق محفوظة.
+        {/* Bottom Sub-footer Row */}
+        <div className="pt-6 border-t border-zinc-200/70 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400">
+          <p className="text-zinc-500 font-medium">
+            القرآن نور، والذكر حياة.
+          </p>
+
+          <p>© 2026 زواوي. جميع الحقوق محفوظة.</p>
         </div>
       </Container>
     </footer>
