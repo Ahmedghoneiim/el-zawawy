@@ -28,10 +28,10 @@ export function AppPreviewMockup() {
               {sampleAyat.map((ayah, index) => (
                 <p
                   key={ayah}
-                  className="rounded-lg bg-white px-4 py-4 text-right text-xl leading-10 text-zinc-900 shadow-sm"
+                  className="rounded-lg bg-white px-4 py-4 text-left text-xl leading-10 text-zinc-900 shadow-sm"
                 >
                   {ayah}
-                  <span className="ms-2 inline-flex h-7 w-7 items-center justify-center rounded-full border border-emerald-200 text-xs font-bold text-emerald-800">
+                  <span className="ml-2 inline-flex h-7 w-7 items-center justify-center rounded-full border border-emerald-200 text-xs font-bold text-emerald-800">
                     {index + 2}
                   </span>
                 </p>

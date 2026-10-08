@@ -23,7 +23,7 @@ export function StoreBadge({ href, label, storeName, platform }) {
       <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-white text-base font-black text-zinc-950">
         {style.mark}
       </span>
-      <span className="text-right">
+      <span className="text-left">
         <span className="block text-[0.7rem] leading-none text-zinc-300">
           {style.eyebrow}
         </span>
