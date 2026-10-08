@@ -2,6 +2,7 @@ import { FeaturesSection } from "./components/FeaturesSection";
 import { Footer } from "./components/Footer";
 import { HeroSection } from "./components/HeroSection";
 import { Navbar } from "./components/Navbar";
+import FeaturesGrid from './components/FeaturesGrid';
 
 export function LandingPage() {
   return (
@@ -10,6 +11,7 @@ export function LandingPage() {
       <main>
         <HeroSection />
         <FeaturesSection />
+        <FeaturesGrid/>
       </main>
       <Footer />
     </div>
