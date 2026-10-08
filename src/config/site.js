@@ -6,7 +6,7 @@ export const siteConfig = {
     "تطبيق قرآن كريم متكامل يجمع المصحف، التلاوات الصوتية، التفسير، والأذكار اليومية في تجربة عربية سهلة وسريعة.",
   url: "https://elzawawy-quran.app",
   locale: "ar-EG",
-  direction: "rtl",
+  direction: "ltr",
   contactEmail: "support@elzawawy-quran.app",
   navigation: [
     { label: "الرئيسية", href: "#hero" },
