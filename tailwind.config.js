@@ -48,6 +48,14 @@ export default {
           900: "#141714",
           950: "#090b0a",
         },
+        
+        pine: "#174A3A",
+        bronze: "#A78343",
+        goldlight: "#C9A45C",
+        sand: "#F3F0E7",
+        cream: "#FAF9F6",
+        muted: "#68736F",
+
       },
       fontFamily: {
         body: ['"Cairo"', "system-ui", "sans-serif"],
