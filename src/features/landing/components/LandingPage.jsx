@@ -9,7 +9,7 @@ import QuranSection from "./QuranSection";
 import {PrayerTimesSection} from "./PrayerTimesSection";
 import {AudioSection}  from "./AudioSection";
 
-
+import FeaturesGrid from "./components/FeaturesGrid";
 
 export function LandingPage() {
   return (
@@ -24,7 +24,7 @@ export function LandingPage() {
         <AthkarSection />
         <PrayerTimesSection/>
         <AudioSection/>
-
+        <FeaturesGrid />
 
 
       </main>
