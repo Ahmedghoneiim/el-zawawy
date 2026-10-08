@@ -15,25 +15,43 @@ export function Footer() {
           </div>
 
           {/* Center Navigation Links */}
-          <nav aria-label="روابط أسفل الصفحة" className="order-3 md:order-2">
+          <nav
+            aria-label="روابط أسفل الصفحة"
+            className="order-3 md:order-2"
+          >
             <ul className="flex flex-wrap justify-center items-center gap-6 text-xs sm:text-sm font-semibold text-zinc-600">
               <li>
-                <a href="#faq" className="hover:text-[#143d24] transition-colors">
+                <a
+                  href="#faq"
+                  className="hover:text-[#143d24] transition-colors"
+                >
                   الأسئلة الشائعة
                 </a>
               </li>
+
               <li>
-                <a href="#user-journey" className="hover:text-[#143d24] transition-colors">
+                <a
+                  href="#user-journey"
+                  className="hover:text-[#143d24] transition-colors"
+                >
                   رحلة المستخدم
                 </a>
               </li>
+
               <li>
-                <a href="#features" className="hover:text-[#143d24] transition-colors">
+                <a
+                  href="#features"
+                  className="hover:text-[#143d24] transition-colors"
+                >
                   مميزات التطبيق
                 </a>
               </li>
+
               <li>
-                <a href="#hero" className="hover:text-[#143d24] transition-colors">
+                <a
+                  href="#hero"
+                  className="hover:text-[#143d24] transition-colors"
+                >
                   الرئيسية
                 </a>
               </li>
@@ -45,16 +63,17 @@ export function Footer() {
             <div className="w-10 h-10 rounded-xl bg-[#143d24] flex items-center justify-center text-amber-300 font-bold text-lg shadow-sm">
               ز
             </div>
+
             <div className="text-right">
               <span className="block text-lg font-black tracking-wider text-[#143d24] font-serif">
                 ZAWAWY
               </span>
+
               <span className="block text-[10px] text-zinc-500 font-medium">
                 همك في رحلتك الإيمانية
               </span>
             </div>
           </div>
-
         </div>
 
         {/* Bottom Sub-footer Row */}
@@ -62,6 +81,7 @@ export function Footer() {
           <p className="text-zinc-500 font-medium">
             القرآن نور، والذكر حياة.
           </p>
+
           <p>© 2026 زواوي. جميع الحقوق محفوظة.</p>
         </div>
       </Container>

@@ -1,10 +1,17 @@
 export { AppPreviewMockup } from "./AppPreviewMockup";
 export { FeaturesSection } from "./FeaturesSection";
+
 export { UserJourneySection } from "./UserJourneySection";
 export { CrossDeviceSection } from "./CrossDeviceSection";
 export { FaqSection } from "./FaqSection";
 export { CtaBannerSection } from "./CtaBannerSection";
+
 export { Footer } from "./Footer";
 export { HeroSection } from "./HeroSection";
 export { Navbar } from "./Navbar";
 export { StoreBadge } from "./StoreBadge";
+
+export { UserJourneySection } from "./UserJourneySection";
+export { CrossDeviceSection } from "./CrossDeviceSection";
+export { CtaBannerSection } from "./CtaBannerSection";
+export { FaqSection } from "./FaqSection";
