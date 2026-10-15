@@ -1,5 +1,7 @@
-import { LandingPage } from "./features/landing";
+//  import { LandingPage } from "./features/landing";
+import { HomePage } from "./features/Home/HomePage";
 
 export default function App() {
-  return <LandingPage />;
+  
+  return <HomePage />;
 }
