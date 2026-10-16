@@ -1,7 +1,17 @@
-const BASE = import.meta.env.VITE_API_BASE_URL ?? "";
+const BASE_URL = "https://zawawy-api-staging.onrender.com";
 
-export async function api(path, { signal } = {}) {
-  const res = await fetch(`${BASE}${path}`, { signal });
-  if (!res.ok) throw new Error(`API ${res.status}: ${path}`);
+export async function api(endpoint, options = {}) {
+  const res = await fetch(`${BASE_URL}${endpoint}`, {
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+    ...options,
+  });
+
+  if (!res.ok) {
+    throw new Error(`API Error: ${res.status}`);
+  }
+
   return res.json();
 }

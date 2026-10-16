@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import {
   ArrowLeft, BadgeCheck, BookOpen, Bell, Bookmark, Check, Clock, Download, FileText, Flame,
@@ -36,7 +35,6 @@ const QUICK = [
   { t: "رمضان 2026", s: "تلاوات وختمات", i: Moon, bg: "bg-[#EEF2FF]", c: "text-indigo-600" },
 ];
 
-// سور الكروت: الكهف، مريم، الملك
 const FEATURED = [18, 19, 67];
 const IMGS = ["/audio-1.jpg", "/audio-2.jpg", "/audio-3.jpg"];
 
@@ -53,8 +51,8 @@ const to12h = (hhmm) => {
 };
 const mmss = (s) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
 
-/* ---------- الهيدر ---------- */
-function HomeHeader({ prayer }) {
+/* ---------- الهيدر والتنقل ---------- */
+function HomeHeader({ prayer, onNavigate }) {
   const d = new Date();
   const weekday = new Intl.DateTimeFormat("ar-EG", { weekday: "long" }).format(d);
   const hijri = new Intl.DateTimeFormat("ar-SA-u-ca-islamic-umalqura", { day: "numeric", month: "long", year: "numeric" }).format(d);
@@ -62,13 +60,22 @@ function HomeHeader({ prayer }) {
   return (
     <header className="bg-white">
       <Wrap className="flex flex-wrap items-center gap-5 py-6 lg:flex-nowrap">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 cursor-pointer" onClick={() => onNavigate && onNavigate("home")}>
           <img src="/logo.png" alt="" className="h-14 w-14 object-contain" />
           <p className="text-xs font-bold leading-5 text-[#174A3A]">الشيخ<br />عبدالرحمن<br />الزواوي</p>
         </div>
         <nav className="hidden flex-1 items-center gap-1 lg:flex">
           {NAV.map((x, i) => (
-            <a key={x} href="#" className={`rounded-full px-5 py-2.5 text-sm font-bold ${i === 0 ? "bg-[#174A3A] text-white shadow-md" : "text-[#174A3A]/70 hover:bg-[#F2F7F4]"}`}>{x}</a>
+            <button
+              key={x}
+              onClick={() => {
+                if (x === "الأذكار" && onNavigate) onNavigate("adhkar");
+                if (x === "الرئيسية" && onNavigate) onNavigate("home");
+              }}
+              className={`rounded-full px-5 py-2.5 text-sm font-bold transition ${i === 0 ? "bg-[#174A3A] text-white shadow-md" : "text-[#174A3A]/70 hover:bg-[#F2F7F4]"}`}
+            >
+              {x}
+            </button>
           ))}
         </nav>
         <div className="flex items-center gap-3 rounded-full bg-[#F2F7F4] px-4 py-2">
@@ -91,7 +98,7 @@ function HomeHeader({ prayer }) {
 function HeroPlayer() {
   const { tracks, reciter } = useRecitations();
   const p = useAudioPlayer();
-  const t = p.track ?? tracks?.find((x) => x.id === 18); // الكهف
+  const t = p.track ?? tracks?.find((x) => x.id === 18);
   const active = p.track?.id === t?.id;
   const dur = active ? p.dur : t?.duration ?? 0;
   return (
@@ -110,7 +117,6 @@ function HeroPlayer() {
   );
 }
 
-/* ---------- الهيرو ---------- */
 function Hero({ prayer }) {
   const rows = prayer?.rows ?? FALLBACK;
   const nextKey = prayer?.next?.key ?? "asr";
@@ -161,7 +167,7 @@ const CardHead = ({ icon: I, title, sub, img }) => (
   </div>
 );
 
-function DailyCards() {
+function DailyCards({ onNavigate }) {
   const [hadith, setHadith] = useState({ textArabic: "إنما الأعمال بالنيّات، وإنما لكل امرئ ما نوى", source: "رواه أمير المؤمنين عمر بن الخطاب رضي الله عنه" });
   useEffect(() => { api("/v1/hadiths/random").then(setHadith).catch((e) => console.error("API error:", e)); }, []);
 
@@ -189,7 +195,12 @@ function DailyCards() {
           <div><p className="text-[10px] font-bold text-[#C69234]">الورد المستحق:</p><p className="text-sm font-extrabold text-[#174A3A]">{morning?.nameArabic ?? "أذكار الصباح"}</p></div>
           <span className="flex items-center gap-1 rounded-full bg-[#E6EFE9] px-3 py-1 text-[10px] font-bold text-[#174A3A]"><Check size={10} />{morning ? `${morning.items.length} أذكار` : "…"}</span>
         </div>
-        <a href="#" className="mt-auto flex items-center justify-center gap-2 rounded-xl bg-[#E6EFE9] py-3.5 text-xs font-bold text-[#174A3A]">اذكر الآن<ArrowLeft size={14} /></a>
+        <button 
+          onClick={() => onNavigate && onNavigate("adhkar")}
+          className="mt-auto flex items-center justify-center gap-2 rounded-xl bg-[#E6EFE9] py-3.5 text-xs font-bold text-[#174A3A] hover:bg-[#d8e3dc] transition"
+        >
+          اذكر الآن<ArrowLeft size={14} />
+        </button>
       </article>
       <article className="flex min-h-[365px] flex-col rounded-3xl border border-[#C6923433] bg-[#F7EDE0] p-7 shadow-sm">
         <div className="flex items-center justify-between">
@@ -204,7 +215,6 @@ function DailyCards() {
   );
 }
 
-/* ---------- بوابات الوصول السريع ---------- */
 function QuickAccess() {
   return (
     <Wrap className="pt-14">
@@ -225,7 +235,6 @@ function QuickAccess() {
   );
 }
 
-/* ---------- مكتبة الصوتيات  ---------- */
 function AudioLibrary() {
   const { tracks, reciter } = useRecitations();
   const p = useAudioPlayer();
@@ -278,7 +287,6 @@ function AudioLibrary() {
   );
 }
 
-/* ---------- الورد والمسبحة  ---------- */
 function DailyWird() {
   const [idx, setIdx] = useState(0);
   const [count, setCount] = useState(28);
@@ -329,14 +337,14 @@ function DailyWird() {
   );
 }
 
-export function HomePage() {
+export function HomePage({ onNavigate }) {
   const prayer = usePrayerTimes();
   return (
     <AudioPlayerProvider>
       <div dir="rtl" className="min-h-screen bg-[#FDFBF7] font-body">
-        <HomeHeader prayer={prayer} />
+        <HomeHeader prayer={prayer} onNavigate={onNavigate} />
         <Hero prayer={prayer} />
-        <DailyCards />
+        <DailyCards onNavigate={onNavigate} />
         <div className="mt-16 bg-[#E6EFE9] pb-4 pt-2">
           <QuickAccess />
           <AudioLibrary />
