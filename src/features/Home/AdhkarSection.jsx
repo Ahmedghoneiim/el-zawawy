@@ -8,6 +8,7 @@ import {
 import { api } from "../../api/client";
 import { usePrayerTimes } from "../../api/usePrayerTimes";
 import { useKhatmDua } from "../../api/useKhatmDua";
+import { markDone } from "./wirdStore";
 
 
 
@@ -998,6 +999,7 @@ export default function AdhkarSection({ onNavigate }) {
     if (!activeItem || itemCounter >= repeat) return;
     const next = itemCounter + 1;
     setItemCounter(next);
+    if (next >= repeat) markDone(selectedSlug, activeItemIndex);
     if (next >= repeat && activeItemIndex + 1 < activeItems.length) {
       advanceTimer.current = setTimeout(() => {
         setActiveItemIndex((p) => p + 1);
